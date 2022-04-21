@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/org.simulation.devs.model/src-gen" creationIcons="false"
+    editDirectory="/org.simulation.devs.model.edit/src-gen" editorDirectory="/org.simulation.devs.model.editor/src-gen"
+    modelPluginID="org.simulation.devs.model" modelName="DevsModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>devsModel.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="DevsModel" basePackage="org.simulation.devs.model" disposableProviderFactory="true"
+      ecorePackage="devsModel.ecore#/">
+    <genClasses ecoreClass="devsModel.ecore#//DevsEditor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devsModel.ecore#//DevsEditor/devsmodel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devsModel.ecore#//DevsEditor/devsport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devsModel.ecore#//DevsEditor/devscoupling"/>
+    </genClasses>
+    <genClasses ecoreClass="devsModel.ecore#//DevsModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devsModel.ecore#//DevsModel/containsDevsPort"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devsModel.ecore#//DevsModel/name"/>
+    </genClasses>
+    <genClasses ecoreClass="devsModel.ecore#//DevsAtomicModel"/>
+    <genClasses ecoreClass="devsModel.ecore#//DevsCoupleModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devsModel.ecore#//DevsCoupleModel/containsDevsModel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devsModel.ecore#//DevsCoupleModel/containsDevsAtomicModel"/>
+    </genClasses>
+    <genClasses ecoreClass="devsModel.ecore#//DevsPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devsModel.ecore#//DevsPort/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devsModel.ecore#//DevsPort/containsDevsCoupling"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devsModel.ecore#//DevsPort/targetConnection"/>
+    </genClasses>
+    <genClasses ecoreClass="devsModel.ecore#//Coupling">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devsModel.ecore#//Coupling/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devsModel.ecore#//Coupling/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devsModel.ecore#//Coupling/sourceConnection"/>
+    </genClasses>
+    <genClasses ecoreClass="devsModel.ecore#//Input"/>
+    <genClasses ecoreClass="devsModel.ecore#//Output"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="devsModel" nsURI="http://www.example.org/devsModel" nsPrefix="devsModel">
+  <eClassifiers xsi:type="ecore:EClass" name="DevsEditor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devsmodel" upperBound="-1"
+        eType="#//DevsModel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devsport" upperBound="-1"
+        eType="#//DevsPort" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devscoupling" upperBound="-1"
+        eType="#//Coupling" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DevsModel" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containsDevsPort" upperBound="-1"
+        eType="#//DevsPort" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DevsAtomicModel" eSuperTypes="#//DevsModel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DevsCoupleModel" eSuperTypes="#//DevsModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containsDevsModel" upperBound="-1"
+        eType="#//DevsCoupleModel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containsDevsAtomicModel"
+        upperBound="-1" eType="#//DevsAtomicModel" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DevsPort" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containsDevsCoupling" upperBound="-1"
+        eType="#//Coupling" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetConnection" eType="#//Coupling"
+        eOpposite="#//Coupling/source"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Coupling">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//DevsPort"
+        eOpposite="#//DevsPort/targetConnection"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//DevsPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceConnection" eType="#//DevsPort"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//DevsPort"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//DevsPort"/>
+</ecore:EPackage>
