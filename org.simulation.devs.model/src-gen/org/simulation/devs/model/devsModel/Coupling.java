@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Coupling</b></em>'.
+ * A representation of the model object '<em><b>Coupling</b></em>'. This coupling
  * <!-- end-user-doc -->
  *
  * <p>
